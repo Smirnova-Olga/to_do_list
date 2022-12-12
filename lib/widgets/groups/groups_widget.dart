@@ -32,7 +32,7 @@ class _GroupsWidgetBody extends StatelessWidget {
       body: const _GroupListWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
-            GroupsWidgetModelProvider.read(context)?.model.showFrom(context),
+            GroupsWidgetModelProvider.read(context)?.model.showForm(context),
         child: const Icon(Icons.add),
       ),
     );
@@ -109,7 +109,7 @@ class _GroupListRowWidget extends StatelessWidget {
       child: ListTile(
         title: Text(group.name),
         trailing: const Icon(Icons.chevron_right),
-        onTap: (() {}),
+        onTap: () => model.showTasks(context, indexInList),
         enableFeedback: true,
       ),
     );
