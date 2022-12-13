@@ -22,9 +22,10 @@ class TaskFormWidgetModel {
     final task = Task(text: taskText, isDone: false);
     await taskBox.add(task);
 
-    final groupBox = await Hive.openBox<Group>('goups_box');
+    final groupBox = await Hive.openBox<Group>('groups_box');
     final group = groupBox.get(groupKey);
     group?.addTask(taskBox, task);
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pop();
   }
 }

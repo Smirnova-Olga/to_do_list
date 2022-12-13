@@ -38,7 +38,7 @@ class TasksWidgetModel extends ChangeNotifier {
 
   void deleteTask(int groupIndex) async {
     await _group?.tasks?.deleteFromHive(groupIndex);
-    //await _group?.save();
+    await _group?.save();
   }
 
   void doneToggle(int groupIndex) async {
@@ -54,7 +54,12 @@ class TasksWidgetModel extends ChangeNotifier {
       Hive.registerAdapter(GroupAdapter());
     }
     _groupBox = Hive.openBox<Group>('groups_box');
+    if (!Hive.isAdapterRegistered(2)) {
+      Hive.registerAdapter(TaskAdapter());
+    }
+    Hive.openBox<Task>('tasks_box');
     _loadGroup();
+    _setupListenTasks();
   }
 }
 

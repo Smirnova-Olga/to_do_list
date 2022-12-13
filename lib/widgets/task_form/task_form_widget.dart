@@ -39,12 +39,10 @@ class _TextFormWidgetBody extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Новая задача'),
       ),
-      body: Center(
-        child: Container(
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: _TaskTextWidget(),
-          ),
+      body: const Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: _TaskTextWidget(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
