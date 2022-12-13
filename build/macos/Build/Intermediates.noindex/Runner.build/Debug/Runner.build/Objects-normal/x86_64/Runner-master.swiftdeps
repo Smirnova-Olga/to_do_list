@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)"
+options: "ecf7bb4fc24810fc913872d75f017b5c1550f8c74ac9a152c431b070e2144c88"
+build_start_time: [1670925855, 858759880]
+build_end_time: [1670925867, 224279880]
+inputs:
+  "/Users/volha/Documents/projects/to_do_list/macos/Flutter/GeneratedPluginRegistrant.swift": [1670925811, 286159038]
+  "/Users/volha/Documents/projects/to_do_list/macos/Runner/AppDelegate.swift": [1669188196, 0]
+  "/Users/volha/Documents/projects/to_do_list/macos/Runner/MainFlutterWindow.swift": [1669188196, 0]
