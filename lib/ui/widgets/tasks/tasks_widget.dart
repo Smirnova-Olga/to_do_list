@@ -4,10 +4,14 @@ import 'package:to_do_list/ui/widgets/tasks/tasks_widget_model.dart';
 
 class TasksWidget extends StatefulWidget {
   final int groupKey;
-  const TasksWidget({super.key, required this.groupKey});
+  const TasksWidget({
+    Key? key,
+    required this.groupKey,
+  }) : super(key: key);
 
   @override
-  State<TasksWidget> createState() => _TasksWidgetState();
+  // ignore: library_private_types_in_public_api
+  _TasksWidgetState createState() => _TasksWidgetState();
 }
 
 class _TasksWidgetState extends State<TasksWidget> {
@@ -26,10 +30,16 @@ class _TasksWidgetState extends State<TasksWidget> {
       child: const TasksWidgetBody(),
     );
   }
+
+  @override
+  void dispose() {
+    _model.dispose();
+    super.dispose();
+  }
 }
 
 class TasksWidgetBody extends StatelessWidget {
-  const TasksWidgetBody({super.key});
+  const TasksWidgetBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +68,7 @@ class _TaskListWidget extends StatelessWidget {
     return ListView.separated(
       itemCount: groupsCount,
       itemBuilder: (BuildContext context, int index) {
-        return _TaskListRowWidget(
-          indexInList: index,
-        );
+        return _TaskListRowWidget(indexInList: index);
       },
       separatorBuilder: (BuildContext context, int index) {
         return const Divider(height: 1);
@@ -87,7 +95,6 @@ class _TaskListRowWidget extends StatelessWidget {
             decoration: TextDecoration.lineThrough,
           )
         : null;
-
     return Slidable(
       endActionPane: ActionPane(
         motion: const BehindMotion(),

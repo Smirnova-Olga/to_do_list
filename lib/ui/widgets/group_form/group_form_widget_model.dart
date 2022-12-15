@@ -1,20 +1,18 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:to_do_list/domain/data_provider/box_mahager.dart';
 import 'package:to_do_list/domain/entity/group.dart';
 
 class GroupFormWidgetModel {
-  var groupeName = '';
+  var groupName = '';
 
   void saveGroup(BuildContext context) async {
-    if (groupeName.isEmpty) return;
-    if (!Hive.isAdapterRegistered(1)) {
-      Hive.registerAdapter(GroupAdapter());
-    }
-    final box = await Hive.openBox<Group>('groups_box');
-    final group = Group(name: groupeName);
+    if (groupName.isEmpty) return;
+    final group = Group(name: groupName);
+    final box = await BoxManager.instance.openGroupBox();
     await box.add(group);
+    await BoxManager.instance.closeBox(box);
     Navigator.of(context).pop();
   }
 }
